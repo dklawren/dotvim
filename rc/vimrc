@@ -2,3 +2,53 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 let mapleader = ","
+
+filetype indent on
+filetype plugin on
+
+syntax on
+
+set autoindent                  " copy indent from current line
+set autoread                    " read open files again when changed outside Vim
+set autowrite                   " write a modified buffer on each :next , ...
+set backspace=indent,eol,start  " backspacing over everything in insert mode
+set backup                      " keep a backup file
+set browsedir=current           " which directory to use for the file browser
+set cindent
+set complete+=k                 " scan the files given with the 'dictionary' option
+set expandtab
+set history=50                  " keep 50 lines of command line history
+set hlsearch                    " highlightthe last used search pattern
+set incsearch                   " do incremental searching
+set mouse=a                     " enable the use of the mouse
+set nocompatible
+set nowrap                      " do not wrap lines
+set number
+set numberwidth=4
+set popt=left:8pc,right:3pc     " print options
+set ruler                       " show the cursor position all the time
+set shiftwidth=4                " number of spaces to use for each step of indent
+set showcmd                     " display incomplete commands
+set smartcase
+set smartindent                 " smart autoindenting when starting a new line
+set smarttab
+set softtabstop=4
+set tabstop=4                   " number of spaces that a <Tab> counts for
+set ttymouse=xterm2
+set visualbell                  " visual bell instead of beeping
+set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
+set wildmenu                    " command-line completion in an enhanced mode
+
+colorscheme lucius
+set bg=dark                     " Dark background terminals
+
+"This is necessary to allow pasting from outside vim. It turns off auto stuff.
+""You can tell you are in paste mode when the ruler is not visible
+set pastetoggle=<F2>
+
+" Use perl compiler for all *.pl and *.pm files.
+autocmd BufNewFile,BufRead *.p? compiler perl
+
+source $HOME/.vim/highlighting.vim
+source $HOME/.vim/keyboard.vim
+
