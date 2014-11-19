@@ -9,3 +9,6 @@ let Tlist_Inc_Winwidth = 0
 
 "NERDTree Shortcut
 map <Leader>n :NERDTreeToggle<CR>
+
+"Toggle Line Numbers
+map <Leader>l :set number!<CR>
