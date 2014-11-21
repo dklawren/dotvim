@@ -16,3 +16,6 @@
 [submodule "bundle/lucius"]
 	path = bundle/lucius
 	url = git://github.com/jonathanfilip/lucius.git
+[submodule "bundle/sparkup"]
+	path = bundle/sparkup
+	url = git://github.com/rstacruz/sparkup.git

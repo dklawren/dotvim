@@ -22,7 +22,6 @@ set incsearch                   " do incremental searching
 set mouse=a                     " enable the use of the mouse
 set nocompatible
 set nowrap                      " do not wrap lines
-set number
 set numberwidth=4
 set popt=left:8pc,right:3pc     " print options
 set ruler                       " show the cursor position all the time
@@ -47,6 +46,9 @@ set pastetoggle=<F2>
 
 " Use perl compiler for all *.pl and *.pm files.
 autocmd BufNewFile,BufRead *.p? compiler perl
+
+"define :Tidy command to run perltidy on visual selection || entire buffer"
+command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
 
 source $HOME/.vim/highlighting.vim
 source $HOME/.vim/keyboard.vim
