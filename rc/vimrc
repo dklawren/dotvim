@@ -19,6 +19,7 @@ set expandtab
 set history=50                  " keep 50 lines of command line history
 set hlsearch                    " highlightthe last used search pattern
 set incsearch                   " do incremental searching
+set laststatus=2                " set statusline to appear all the time
 set mouse=a                     " enable the use of the mouse
 set nocompatible
 set nowrap                      " do not wrap lines
@@ -52,4 +53,3 @@ command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
 
 source $HOME/.vim/highlighting.vim
 source $HOME/.vim/keyboard.vim
-

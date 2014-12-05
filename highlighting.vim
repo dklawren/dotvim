@@ -8,3 +8,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 highlight MatchParen ctermbg=blue guibg=lightyellow
+
+" Highlight the place where we go past 80 columns
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
