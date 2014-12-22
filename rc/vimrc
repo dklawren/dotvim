@@ -37,6 +37,8 @@ set ttymouse=xterm2
 set visualbell                  " visual bell instead of beeping
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
+set cursorline                  " highlight line where cursor is
+set cursorcolumn                " highlight column where cursor is
 
 colorscheme lucius
 set bg=dark                     " Dark background terminals
