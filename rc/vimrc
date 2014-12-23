@@ -50,6 +50,9 @@ set pastetoggle=<F2>
 " Use perl compiler for all *.pl and *.pm files.
 autocmd BufNewFile,BufRead *.p? compiler perl
 
+" Highlight .tmpl files as tt2html
+autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
+
 "define :Tidy command to run perltidy on visual selection || entire buffer"
 command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
 
