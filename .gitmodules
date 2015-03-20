@@ -34,3 +34,9 @@
 [submodule "bundle/mojo"]
 	path = bundle/mojo
 	url = https://github.com/yko/mojo.vim.git
+[submodule "bundle/vim-bad-whitespace"]
+	path = bundle/vim-bad-whitespace
+	url = https://github.com/bitc/vim-bad-whitespace.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
