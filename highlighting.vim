@@ -4,9 +4,6 @@ highlight SignColumn ctermbg=darkgray
 highlight SignLine ctermbg=darkred
 highlight SignText ctermbg=white
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-
 highlight MatchParen ctermbg=blue guibg=lightyellow
 
 " Highlight the place where we go past 80 columns
