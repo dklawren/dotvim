@@ -15,3 +15,6 @@ map <Leader>n :NERDTreeToggle<CR>
 
 "Toggle Line Numbers
 map <Leader>l :set number!<CR>
+
+"Syntastic Toggle Mode
+map <Leader>s :SyntasticToggleMode<CR>
