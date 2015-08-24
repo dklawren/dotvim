@@ -8,7 +8,7 @@ highlight MatchParen ctermbg=blue guibg=lightyellow
 
 " Highlight the place where we go past 80 columns
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%121v', 100)
 
 hi CursorLine guifg=NONE guibg=#000000 gui=none
 hi CursorColumn guifg=NONE guibg=#000000 gui=none
