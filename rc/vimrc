@@ -40,7 +40,7 @@ set wildmenu                    " command-line completion in an enhanced mode
 set cursorline                  " highlight line where cursor is
 set cursorcolumn                " highlight column where cursor is
 
-colorscheme lucius
+colorscheme solarized
 set bg=dark                     " Dark background terminals
 
 "This is necessary to allow pasting from outside vim. It turns off auto stuff.
