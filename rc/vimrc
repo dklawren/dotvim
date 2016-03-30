@@ -33,7 +33,6 @@ set smartindent                 " smart autoindenting when starting a new line
 set smarttab
 set softtabstop=4
 set tabstop=4                   " number of spaces that a <Tab> counts for
-set ttymouse=xterm2
 set visualbell                  " visual bell instead of beeping
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
