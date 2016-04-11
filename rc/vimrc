@@ -44,29 +44,35 @@ set t_Co=256
 set background=light
 colorscheme solarized
 
-"This is necessary to allow pasting from outside vim. It turns off auto stuff.
-""You can tell you are in paste mode when the ruler is not visible
+" This is necessary to allow pasting from outside vim. It turns off auto stuff.
+" You can tell you are in paste mode when the ruler is not visible
 set pastetoggle=<F2>
 
 " Use perl compiler for all *.pl and *.pm files.
 autocmd BufNewFile,BufRead *.p? compiler perl
 
-" Highlight .tmpl files as tt2html
+"Highlight .tmpl files as tt2html
 autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
 
 "define :Tidy command to run perltidy on visual selection || entire buffer"
 command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
 
-"vim-airline
+" define different tab indention sizes per file type
+" for Template::Toolkit/html/json files, 2 spaces
+autocmd Filetype tt2html setlocal ts=2 sw=2
+autocmd Filetype html setlocal ts=2 sw=2
+autocmd Filetype json setlocal ts=2 sw=2
+
+" vim-airline
 let g:airline_powerline_fonts = 1
 
-"mojo.vim
+" mojo.vim
 let mojo_highlight_data = 1
 
-"tagbar
+" tagbar
 let g:tagbar_autofocus = 1
 
-"syntastic
+" syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
