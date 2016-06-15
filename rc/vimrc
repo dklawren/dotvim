@@ -20,6 +20,7 @@ set history=50                  " keep 50 lines of command line history
 set hlsearch                    " highlightthe last used search pattern
 set incsearch                   " do incremental searching
 set laststatus=2                " set statusline to appear all the time
+set list                        " show invisible characters by default
 set mouse=a                     " enable the use of the mouse
 set nocompatible
 set nowrap                      " do not wrap lines
@@ -27,6 +28,7 @@ set numberwidth=4
 set popt=left:8pc,right:3pc     " print options
 set ruler                       " show the cursor position all the time
 set shiftwidth=4                " number of spaces to use for each step of indent
+set sessionoptions-=options
 set showcmd                     " display incomplete commands
 set smartcase
 set smartindent                 " smart autoindenting when starting a new line
@@ -38,6 +40,24 @@ set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set cursorline                  " highlight line where cursor is
 set cursorcolumn                " highlight column where cursor is
+
+" Ignore these filenames during enhanced command line completion.
+set wildignore+=*.aux,*.out,*.toc                        " LaTeX intermediate files
+set wildignore+=*.png,*.jpg,*.bmp,*.gif                  " binary images
+set wildignore+=*.luac                                   " Lua byte code
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.class " compiled object files
+set wildignore+=*.pyc                                    " Python byte code
+set wildignore+=*.spl                                    " compiled spelling word lists
+set wildignore+=*.sw?                                    " Vim swap files
+
+set foldopen=tag,search,quickfix,undo,jump,mark,percent
+set fillchars=fold:\ ,stl:\ ,stlnc:\  " borders
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+    let &fillchars = "vert:┃,diff:⎼,fold:⎼"
+endif
 
 let g:solarized_termcolors=256
 set t_Co=256
