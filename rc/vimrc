@@ -20,7 +20,6 @@ set history=50                  " keep 50 lines of command line history
 set hlsearch                    " highlightthe last used search pattern
 set incsearch                   " do incremental searching
 set laststatus=2                " set statusline to appear all the time
-set list                        " show invisible characters by default
 set mouse=a                     " enable the use of the mouse
 set nocompatible
 set nowrap                      " do not wrap lines
@@ -40,24 +39,6 @@ set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set cursorline                  " highlight line where cursor is
 set cursorcolumn                " highlight column where cursor is
-
-" Ignore these filenames during enhanced command line completion.
-set wildignore+=*.aux,*.out,*.toc                        " LaTeX intermediate files
-set wildignore+=*.png,*.jpg,*.bmp,*.gif                  " binary images
-set wildignore+=*.luac                                   " Lua byte code
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.class " compiled object files
-set wildignore+=*.pyc                                    " Python byte code
-set wildignore+=*.spl                                    " compiled spelling word lists
-set wildignore+=*.sw?                                    " Vim swap files
-
-set foldopen=tag,search,quickfix,undo,jump,mark,percent
-set fillchars=fold:\ ,stl:\ ,stlnc:\  " borders
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-
-if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
-    let &fillchars = "vert:┃,diff:⎼,fold:⎼"
-endif
 
 let g:solarized_termcolors=256
 set t_Co=256
@@ -103,6 +84,11 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_perl_perl_args = "-T -I."
+
+" IndentLine Vim
+let g:indentLine_color_term = 250
+" IndentLine GVim
+let g:indentLine_color_gui = '#A4E57E'
 
 source $HOME/.vim/highlighting.vim
 source $HOME/.vim/keyboard.vim
