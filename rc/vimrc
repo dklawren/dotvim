@@ -373,3 +373,9 @@ nnoremap <leader>j :tabprevious<CR>
 
 "Toggle Line Numbers
 map <Leader>l :set number!<CR>
+
+"Toggle Fuzzy Fineder
+map <Leader>ff :FufCoverageFile<CR>
+
+"" Toggle on/off IndentLine
+nnoremap <leader>i :IndentLinesToggle<CR>
