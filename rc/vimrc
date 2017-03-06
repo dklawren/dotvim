@@ -1,6 +1,59 @@
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+
+Plugin 'vim-scripts/taglist.vim.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'vim-scripts/BlockComment.vim.git'
+Plugin 'jonathanfilip/lucius.git'
+Plugin 'rstacruz/sparkup.git'
+Plugin 'bling/vim-bufferline.git'
+Plugin 'bling/vim-airline.git'
+Plugin 'majutsushi/tagbar.git'
+Plugin 'vim-perl/vim-perl.git'
+Plugin 'vim-scripts/perl-support.vim.git'
+Plugin 'yko/mojo.vim.git'
+Plugin 'bitc/vim-bad-whitespace.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'ekalinin/Dockerfile.vim.git'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'vim-scripts/HTML-AutoCloseTag.git'
+Plugin 'jiangmiao/auto-pairs.git'
+Plugin 'ctrlpvim/ctrlp.vim.git'
+Plugin 'Yggdroot/indentLine.git'
+Plugin 'c9s/perlomni.vim.git'
+Plugin 'SirVer/ultisnips.git'
+Plugin 'vim-airline/vim-airline-themes.git'
+Plugin 'gorodinskiy/vim-coloresque.git'
+Plugin 'tpope/vim-commentary.git'
+Plugin 'hail2u/vim-css3-syntax.git'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'airblade/vim-gitgutter.git'
+Plugin 'jelera/vim-javascript-syntax.git'
+Plugin 'xolox/vim-misc.git'
+Plugin 'jistr/vim-nerdtree-tabs.git'
+Plugin 'sheerun/vim-polyglot.git'
+Plugin 'xolox/vim-session.git'
+Plugin 'honza/vim-snippets.git'
+Plugin 'bronson/vim-trailing-whitespace.git'
+Plugin 'Shougo/vimshell.vim.git'
+Plugin 'gregsexton/matchtag'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 let mapleader = ","
 
 filetype indent on
