@@ -48,7 +48,9 @@ Plugin 'xolox/vim-session.git'
 Plugin 'honza/vim-snippets.git'
 Plugin 'bronson/vim-trailing-whitespace.git'
 Plugin 'Shougo/vimshell.vim.git'
-Plugin 'gregsexton/matchtag'
+Plugin 'gregsexton/matchtag.git'
+Plugin 'klen/python-mode.git'
+Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -107,6 +109,10 @@ set visualbell                  " visual bell instead of beeping
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 
+" python syntax highlighting
+let python_highlight_all = 1
+" python3 syntax checking
+let g:pymode_python = 'python3'
 " session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
