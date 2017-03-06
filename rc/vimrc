@@ -56,9 +56,6 @@ filetype plugin indent on    " required
 
 let mapleader = ","
 
-filetype indent on
-filetype plugin on
-
 syntax on
 
 set autoindent                  " copy indent from current line
