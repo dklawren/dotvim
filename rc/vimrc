@@ -113,6 +113,11 @@ set wildmenu                    " command-line completion in an enhanced mode
 let python_highlight_all = 1
 " python3 syntax checking
 let g:pymode_python = 'python3'
+
+" Disable folding
+set foldmethod=manual
+set foldlevel=99
+
 " session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
@@ -419,9 +424,6 @@ highlight SignText ctermbg=white
 
 highlight MatchParen ctermbg=blue guibg=lightyellow
 
-" Highlight the place where we go past 100 columns
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%121v', 100)
 nnoremap <leader>a :Ack
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>k :tabnext<CR>
