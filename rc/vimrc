@@ -13,44 +13,46 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
-Plugin 'vim-scripts/taglist.vim.git'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'vim-scripts/BlockComment.vim.git'
-Plugin 'jonathanfilip/lucius.git'
-Plugin 'rstacruz/sparkup.git'
-Plugin 'bling/vim-bufferline.git'
-Plugin 'bling/vim-airline.git'
-Plugin 'majutsushi/tagbar.git'
-Plugin 'vim-perl/vim-perl.git'
-Plugin 'vim-scripts/perl-support.vim.git'
-Plugin 'yko/mojo.vim.git'
-Plugin 'bitc/vim-bad-whitespace.git'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'ekalinin/Dockerfile.vim.git'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'vim-scripts/HTML-AutoCloseTag.git'
-Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'ctrlpvim/ctrlp.vim.git'
-Plugin 'Yggdroot/indentLine.git'
-Plugin 'c9s/perlomni.vim.git'
-Plugin 'SirVer/ultisnips.git'
-Plugin 'vim-airline/vim-airline-themes.git'
-Plugin 'gorodinskiy/vim-coloresque.git'
-Plugin 'tpope/vim-commentary.git'
-Plugin 'hail2u/vim-css3-syntax.git'
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'jelera/vim-javascript-syntax.git'
-Plugin 'xolox/vim-misc.git'
-Plugin 'jistr/vim-nerdtree-tabs.git'
-Plugin 'sheerun/vim-polyglot.git'
-Plugin 'xolox/vim-session.git'
-Plugin 'honza/vim-snippets.git'
-Plugin 'bronson/vim-trailing-whitespace.git'
+" Plugin 'airblade/vim-gitgutter.git'
+" Plugin 'bitc/vim-bad-whitespace.git'
+" Plugin 'c9s/perlomni.vim.git'
+" Plugin 'jonathanfilip/lucius.git'
+" Plugin 'tpope/vim-fugitive.git'
+" Plugin 'vim-perl/vim-perl.git'
+" Plugin 'vim-scripts/perl-support.vim.git'
+" Plugin 'yko/mojo.vim.git'
 Plugin 'Shougo/vimshell.vim.git'
+Plugin 'SirVer/ultisnips.git'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Yggdroot/indentLine.git'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'bling/vim-airline.git'
+Plugin 'bling/vim-bufferline.git'
+Plugin 'bronson/vim-trailing-whitespace.git'
+Plugin 'ctrlpvim/ctrlp.vim.git'
+Plugin 'ekalinin/Dockerfile.vim.git'
+Plugin 'gorodinskiy/vim-coloresque.git'
 Plugin 'gregsexton/matchtag.git'
+Plugin 'hail2u/vim-css3-syntax.git'
+Plugin 'honza/vim-snippets.git'
+Plugin 'jelera/vim-javascript-syntax.git'
+Plugin 'jiangmiao/auto-pairs.git'
+Plugin 'jistr/vim-nerdtree-tabs.git'
+Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'klen/python-mode.git'
+Plugin 'majutsushi/tagbar.git'
 Plugin 'nvie/vim-flake8'
+Plugin 'rstacruz/sparkup.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'sheerun/vim-polyglot.git'
+Plugin 'tpope/vim-commentary.git'
+Plugin 'vim-airline/vim-airline-themes.git'
+Plugin 'vim-scripts/BlockComment.vim.git'
+Plugin 'vim-scripts/HTML-AutoCloseTag.git'
+Plugin 'vim-scripts/taglist.vim.git'
+Plugin 'xolox/vim-misc.git'
+Plugin 'xolox/vim-session.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -108,6 +110,7 @@ set ttyfast                     " encoding
 set visualbell                  " visual bell instead of beeping
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
+set nofoldenable                " no automatic folding
 
 " python syntax highlighting
 let python_highlight_all = 1
@@ -158,7 +161,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeTabsToggle<CR>
 " noremap <silent> <F2> :NERDTreeFind<CR>
 " noremap <F3> :NERDTreeToggle<CR>
 
@@ -255,8 +258,10 @@ endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_map = '<leader>e'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " snippets
@@ -308,7 +313,6 @@ if has('unnamedplus')
 endif
 
 noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
 
 if has('macunix')
@@ -437,3 +441,6 @@ map <Leader>ff :FufCoverageFile<CR>
 
 "" Toggle on/off IndentLine
 nnoremap <leader>i :IndentLinesToggle<CR>
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
