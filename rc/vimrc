@@ -1,67 +1,38 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " enter the current millenium
+filetype off     " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-
-" Plugin 'airblade/vim-gitgutter.git'
-" Plugin 'bitc/vim-bad-whitespace.git'
-" Plugin 'c9s/perlomni.vim.git'
-" Plugin 'jonathanfilip/lucius.git'
-" Plugin 'tpope/vim-fugitive.git'
-" Plugin 'vim-perl/vim-perl.git'
-" Plugin 'vim-scripts/perl-support.vim.git'
-" Plugin 'yko/mojo.vim.git'
-Plugin 'Shougo/vimshell.vim.git'
-Plugin 'SirVer/ultisnips.git'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Yggdroot/indentLine.git'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'bling/vim-airline.git'
-Plugin 'bling/vim-bufferline.git'
-Plugin 'bronson/vim-trailing-whitespace.git'
-Plugin 'ctrlpvim/ctrlp.vim.git'
-Plugin 'ekalinin/Dockerfile.vim.git'
-Plugin 'gorodinskiy/vim-coloresque.git'
-Plugin 'gregsexton/matchtag.git'
-Plugin 'hail2u/vim-css3-syntax.git'
-Plugin 'honza/vim-snippets.git'
-Plugin 'jelera/vim-javascript-syntax.git'
+Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'ap/vim-buftabline'
+Plugin 'davidhalter/jedi-vim.git'
+Plugin 'ervandew/supertab.git'
+Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'jistr/vim-nerdtree-tabs.git'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'klen/python-mode.git'
 Plugin 'majutsushi/tagbar.git'
+Plugin 'mhinz/vim-signify'
+Plugin 'mileszs/ack.vim.git'
 Plugin 'nvie/vim-flake8'
-Plugin 'rstacruz/sparkup.git'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'sheerun/vim-polyglot.git'
-Plugin 'tpope/vim-commentary.git'
-Plugin 'vim-airline/vim-airline-themes.git'
-Plugin 'vim-scripts/BlockComment.vim.git'
-Plugin 'vim-scripts/HTML-AutoCloseTag.git'
-Plugin 'vim-scripts/taglist.vim.git'
-Plugin 'xolox/vim-misc.git'
-Plugin 'xolox/vim-session.git'
-
+Plugin 'vim-scripts/indentpython.vim'
 " All of your Plugins must be added before the following line
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 let mapleader = ","
 
-syntax on
+" enable syntax
+syntax enable
 
+set autochdir                   " Set the working directory to wherever the open file lives
 set autoindent                  " copy indent from current line
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
@@ -88,20 +59,23 @@ set modeline                    " use modeline overrides
 set modelines=10                " use moduline overrides
 set mouse=a                     " enable the use of the mouse
 set mousemodel=popup
-set nocompatible
 set nowrap                      " do not wrap lines
 set number                      " display line numbers
 set numberwidth=4
+set path+=**                    " Search down into subfolders
 set popt=left:8pc,right:3pc     " print options
 set ruler                       " show the cursor position all the time
 set sessionoptions-=options
 set shell=/bin/bash             " shell preference
 set shiftwidth=4                " number of spaces to use for each step of indent
 set showcmd                     " display incomplete commands
+set showmatch                   " show the matching part of the pair for [] {} and ()
 set smartcase                   " searching
 set smartindent                 " smart autoindenting when starting a new line
 set smarttab                    " tabs
 set softtabstop=4               " tabs
+set splitbelow                  " split below when horizontal
+set splitright                  " split to the right when vertical
 set tabstop=4                   " number of spaces that a <Tab> counts for
 set title
 set titleold="Terminal"
@@ -109,50 +83,19 @@ set titlestring=%F
 set ttyfast                     " encoding
 set visualbell                  " visual bell instead of beeping
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
-set wildmenu                    " command-line completion in an enhanced mode
-set nofoldenable                " no automatic folding
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd,*.pyc
+set wildignore+=node_modules/*,bower_components/*
+set wildmenu                    " Display all matching files when we tab complete
 
-" python syntax highlighting
-let python_highlight_all = 1
-" python3 syntax checking
-let g:pymode_python = 'python3'
-
-" Disable folding
-set foldmethod=manual
-set foldlevel=99
-
-" session management
-let g:session_directory = "~/.vim/session"
-let g:session_autoload = "no"
-let g:session_autosave = "no"
-let g:session_command_aliases = 1
-
-let g:solarized_termcolors=256
 set t_Co=256
+colorscheme lucius
 set background=dark
-colorscheme solarized
 
-" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
 
-" Abbreviations
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
-
-"" NERDTree configuration
+" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
@@ -161,286 +104,22 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-map <Leader>n :NERDTreeTabsToggle<CR>
-" noremap <silent> <F2> :NERDTreeFind<CR>
-" noremap <F3> :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
 
-"*****************************************************************************
-"" Functions
-"*****************************************************************************
-if !exists('*s:setupWrapping')
-  function s:setupWrapping()
-    set wrap
-    set wm=2
-    set textwidth=79
-  endfunction
-endif
-
-"*****************************************************************************
-"" Autocmd Rules
-"*****************************************************************************
-"" The PC is fast enough, do syntax highlight syncing from start
-augroup vimrc-sync-fromstart
-  autocmd!
-  autocmd BufEnter * :syntax sync fromstart
-augroup END
-
-"" Remember cursor position
-augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-augroup END
-
-"" txt
-augroup vimrc-wrapping
-  autocmd!
-  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
-augroup END
-
-"" make/cmake
-augroup vimrc-make-cmake
-  autocmd!
-  autocmd FileType make setlocal noexpandtab
-  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
-augroup END
-
-set autoread
-
-" Mappings
-
-" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
-
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
-
-" session management
-nnoremap <leader>so :OpenSession<Space>
-nnoremap <leader>ss :SaveSession<Space>
-nnoremap <leader>sd :DeleteSession<CR>
-nnoremap <leader>sc :CloseSession<CR>
-
-"" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
-
-"" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
-
-"" Opens an edit command with the path of the currently edited file filled in
-noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-"" Opens a tab edit command with the path of the currently edited file filled
-noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-"" ctrlp.vim
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 1
-
-" The Silver Searcher
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-noremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-
-" snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_perl_checkers = ['perl']
-let g:syntastic_perl_perl_args = "-T -I."
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_warning_symbol='⚠'
-map <Leader>s :SyntasticToggleMode<CR>
-" Tagbar
-
+" Tagbar configuration
 map <Leader>t :TagbarToggle<CR>
-" nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
-" IndentLine
-let g:indentLine_enabled = 1
-let g:indentLine_concealcursor = 0
-let g:indentLine_char = '┆'
-let g:indentLine_faster = 1
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
-let g:indentLine_char = '|'
+" Ack configuration
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
-" Disable visualbell
-set visualbell t_vb=
+" Flake8 configuration
+autocmd FileType python map <buffer> <Leader>8 :call Flake8()<CR>
 
-"" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
+" Signify configuration
+let g:signify_vcs_list = ['git','hg']
 
-noremap YY "+y<CR>
-noremap XX "+x<CR>
-
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
-
-"" Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
-
-"" Close buffer
-noremap <leader>c :bd<CR>
-
-"" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
-
-"" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
-
-"" Vmap for maintain Visual Mode after shifting > and <
-vmap < <gv
-vmap > >gv
-
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-"" Open current line on GitHub
-noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
-
-"" Custom configs
-
-let g:javascript_enable_domhtmlcss = 1
-
-" vim-javascript
-augroup vimrc-javascript
-  autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
-augroup END
-
-" This is necessary to allow pasting from outside vim. It turns off auto stuff.
-" You can tell you are in paste mode when the ruler is not visible
-set pastetoggle=<F2>
-
-" Use perl compiler for all *.pl and *.pm files.
-autocmd BufNewFile,BufRead *.p? compiler perl
-
-"Highlight .tmpl files as tt2html
-autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
-
-"define :Tidy command to run perltidy on visual selection || entire buffer"
-command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
-
-" define different tab indention sizes per file type
-" for Template::Toolkit/html/json files, 2 spaces
-autocmd Filetype tt2html setlocal ts=2 sw=2
-autocmd Filetype html setlocal ts=2 sw=2
-autocmd Filetype json setlocal ts=2 sw=2
-
-" mojo.vim
-let mojo_highlight_data = 1
-
-" Convenience variables
-
-" vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
-
-"highlight CursorLine cterm=none ctermbg=lightgray
-highlight LineNr cterm=none ctermbg=black ctermfg=darkgray
-highlight SignColumn ctermbg=darkgray
-highlight SignLine ctermbg=darkred
-highlight SignText ctermbg=white
-
-highlight MatchParen ctermbg=blue guibg=lightyellow
-
-nnoremap <leader>a :Ack
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>k :tabnext<CR>
-nnoremap <leader>j :tabprevious<CR>
-
-"Toggle Line Numbers
-map <Leader>l :set number!<CR>
-
-"Toggle Fuzzy Fineder
-map <Leader>ff :FufCoverageFile<CR>
-
-"" Toggle on/off IndentLine
-nnoremap <leader>i :IndentLinesToggle<CR>
-
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" buftabline configuration
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
