@@ -20,6 +20,7 @@ Plugin 'majutsushi/tagbar.git'
 Plugin 'mhinz/vim-signify'
 Plugin 'mileszs/ack.vim.git'
 Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'vim-scripts/indentpython.vim'
 " All of your Plugins must be added before the following line
@@ -123,3 +124,9 @@ let g:signify_vcs_list = ['git','hg']
 " buftabline configuration
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
+
+" NERDcommenter configuration
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
