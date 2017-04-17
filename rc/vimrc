@@ -119,6 +119,9 @@ nnoremap <Leader>a :Ack!<Space>
 " Flake8 configuration
 autocmd FileType python map <buffer> <Leader>8 :call Flake8()<CR>
 
+" Toggle line numbering
+map <Leader>l :set nu!<CR>
+
 " Signify configuration
 let g:signify_vcs_list = ['git','hg']
 
@@ -131,3 +134,8 @@ nnoremap <C-P> :bprev<CR>
 let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+
+" mimic ctrlp functionality
+nnoremap <Leader>p :e **/*
+nnoremap <Leader>v :vsplit **/*
+nnoremap <Leader>s :split **/*
