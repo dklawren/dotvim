@@ -81,7 +81,7 @@ set softtabstop=4               " tabs
 set splitbelow                  " split below when horizontal
 set splitright                  " split to the right when vertical
 set tabstop=4                   " number of spaces that a <Tab> counts for
-"set term=builtin_ansi
+set term=builtin_ansi
 set title
 set titleold="Terminal"
 set titlestring=%F
