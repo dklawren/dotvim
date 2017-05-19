@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'ap/vim-buftabline'
+Plugin 'bronson/vim-trailing-whitespace.git'
 Plugin 'davidhalter/jedi-vim.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'itchyny/lightline.vim'
@@ -23,6 +24,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-perl/vim-perl.git'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -58,7 +60,7 @@ set incsearch                   " do incremental searching
 set laststatus=2                " set statusline to appear all the time
 set modeline                    " use modeline overrides
 set modelines=10                " use moduline overrides
-set mouse=a                     " enable the use of the mouse
+set mouse=r                     " enable the use of the mouse
 set mousemodel=popup
 set nowrap                      " do not wrap lines
 set number                      " display line numbers
@@ -79,6 +81,7 @@ set softtabstop=4               " tabs
 set splitbelow                  " split below when horizontal
 set splitright                  " split to the right when vertical
 set tabstop=4                   " number of spaces that a <Tab> counts for
+"set term=builtin_ansi
 set title
 set titleold="Terminal"
 set titlestring=%F
