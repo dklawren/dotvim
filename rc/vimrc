@@ -144,9 +144,5 @@ nnoremap <Leader>v :vsplit **/*
 nnoremap <Leader>s :split **/*
 
 " Change vim settings based on filetype
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-autocmd Filetype php setlocal ts=2 sw=2 expandtab
-autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
-autocmd Filetype perl setlocal ts=4 sw=4 expandtab
-autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
+autocmd Filetype html,ruby,php,yaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype perl,javascript setlocal ts=4 sw=4 expandtab
