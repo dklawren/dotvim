@@ -64,6 +64,7 @@ set mouse=r                     " enable the use of the mouse
 set mousemodel=popup
 set nowrap                      " do not wrap lines
 set number                      " display line numbers
+set pastetoggle=<F2>            " do not autoindent when pasting
 set path+=**                    " work on directories recursively
 set numberwidth=4
 set path+=**                    " Search down into subfolders
@@ -142,3 +143,10 @@ let g:NERDTrimTrailingWhitespace = 1
 nnoremap <Leader>p :e **/*
 nnoremap <Leader>v :vsplit **/*
 nnoremap <Leader>s :split **/*
+
+" Change vim settings based on filetype
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+autocmd Filetype php setlocal ts=2 sw=2 expandtab
+autocmd Filetype perl setlocal ts=4 sw=4 expandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
