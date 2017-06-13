@@ -26,6 +26,7 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'stanangeloff/php.vim'
 Plugin 'vim-perl/vim-perl.git'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'w0rp/ale'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -148,3 +149,7 @@ nnoremap <Leader>s :split **/*
 " Change vim settings based on filetype
 autocmd Filetype html,ruby,php,yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype perl,javascript setlocal ts=4 sw=4 expandtab
+
+" Use space to jump down a page (like browsers do)...
+nnoremap   <Space> <PageDown>
+vnoremap   <Space> <PageDown>
