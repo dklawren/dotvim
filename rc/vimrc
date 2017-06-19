@@ -13,10 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'ap/vim-buftabline'
 Plugin 'bronson/vim-trailing-whitespace.git'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'davidhalter/jedi-vim.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs.git'
+Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar.git'
 Plugin 'mhinz/vim-signify'
 Plugin 'mileszs/ack.vim.git'
@@ -164,10 +166,8 @@ let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" mimic ctrlp functionality
-nnoremap <Leader>p :e **/*
-nnoremap <Leader>v :vsplit **/*
-nnoremap <Leader>s :split **/*
+" CtrlP configuration
+nnoremap <Leader>p :CtrlP<CR>
 
 " Change vim settings based on filetype
 autocmd Filetype html,ruby,php,yaml setlocal ts=2 sw=2 expandtab
@@ -176,3 +176,17 @@ autocmd Filetype perl,javascript setlocal ts=4 sw=4 expandtab
 " Use space to jump down a page (like browsers do)...
 nnoremap   <Space> <PageDown>
 vnoremap   <Space> <PageDown>
+
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+"
+" Index ctags from any project, including those outside Rails
+function! ReindexCtags()
+    let l:ctags_hook = '$(git rev-parse --show-toplevel)/.git/hooks/ctags'
+    if exists(l:ctags_hook)
+        exec '!'. l:ctags_hook
+    else
+        exec "!ctags -R ."
+    endif
+endfunction
+nmap <Leader>ct :call ReindexCtags()<CR>
