@@ -86,7 +86,6 @@ set softtabstop=4               " tabs
 set splitbelow                  " split below when horizontal
 set splitright                  " split to the right when vertical
 set tabstop=4                   " number of spaces that a <Tab> counts for
-set tags=./tags;/               " tags file
 set title
 set titleold="Terminal"
 set titlestring=%F
@@ -167,7 +166,11 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
 
 " CtrlP configuration
-nnoremap <Leader>p :CtrlP<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Change vim settings based on filetype
 autocmd Filetype html,ruby,php,yaml setlocal ts=2 sw=2 expandtab
