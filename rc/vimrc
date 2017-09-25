@@ -15,6 +15,7 @@ Plugin 'ap/vim-buftabline'
 Plugin 'bronson/vim-trailing-whitespace.git'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'davidhalter/jedi-vim.git'
+Plugin 'ekalinin/Dockerfile.vim.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs.git'
@@ -26,6 +27,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'stanangeloff/php.vim'
+Plugin 'stephpy/vim-yaml'
 Plugin 'vim-perl/vim-perl.git'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'w0rp/ale'
@@ -73,6 +75,7 @@ set path+=**                    " work on directories recursively
 set numberwidth=4
 set path+=**                    " Search down into subfolders
 set popt=left:8pc,right:3pc     " print options
+set relativenumber              " show relative line numbers
 set ruler                       " show the cursor position all the time
 set sessionoptions-=options
 set shell=/bin/bash             " shell preference
