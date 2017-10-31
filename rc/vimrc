@@ -30,6 +30,7 @@ Plugin 'stanangeloff/php.vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'vim-perl/vim-perl.git'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'w0rp/ale'
 " All of your Plugins must be added before the following line
 
@@ -196,3 +197,8 @@ function! ReindexCtags()
     endif
 endfunction
 nmap <Leader>ct :call ReindexCtags()<CR>
+
+" incsearch.vim
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
