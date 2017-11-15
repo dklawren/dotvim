@@ -76,7 +76,6 @@ set path+=**                    " work on directories recursively
 set numberwidth=4
 set path+=**                    " Search down into subfolders
 set popt=left:8pc,right:3pc     " print options
-set relativenumber              " show relative line numbers
 set ruler                       " show the cursor position all the time
 set sessionoptions-=options
 set shell=/bin/bash             " shell preference
