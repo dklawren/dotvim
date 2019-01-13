@@ -10,28 +10,23 @@ Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'ap/vim-buftabline'
-Plugin 'bronson/vim-trailing-whitespace.git'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'davidhalter/jedi-vim.git'
-Plugin 'ekalinin/Dockerfile.vim.git'
-Plugin 'ervandew/supertab.git'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar.git'
-Plugin 'mhinz/vim-signify'
-Plugin 'mileszs/ack.vim.git'
-Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'stanangeloff/php.vim'
-Plugin 'stephpy/vim-yaml'
-Plugin 'vim-perl/vim-perl.git'
-Plugin 'vim-scripts/indentpython.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-bufferline'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'w0rp/ale'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'lilydjwg/colorizer'
+Plugin 'RRethy/vim-illuminate'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'stephpy/vim-yaml'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-perl/vim-perl'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
@@ -141,10 +136,6 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 map <Leader>n :NERDTreeToggle<CR>
 
-" Tagbar configuration
-map <Leader>t :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
 " Ack configuration
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
@@ -159,14 +150,29 @@ map <Leader>l :set nu!<CR>
 let g:signify_vcs_list = ['git','hg']
 
 " buftabline configuration
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+"nnoremap <C-N> :bnext<CR>
+"nnoremap <C-P> :bprev<CR>
+
+map <Leader>bn :bnext<CR>
+map <Leader>bp :bprev<CR>
 
 " NERDcommenter configuration
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " CtrlP configuration
 let g:ctrlp_map = '<c-p>'
@@ -202,4 +208,21 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-:inoremap <S-Tab> <C-V><Tab>
+let g:airline_powerline_fonts = 1
+
+"define :Tidy command to run perltidy on visual selection || entire buffer"
+command -range=% -nargs=* Tidy <line1>,<line2>!perltidy -pro=/home/dkl/devel/repos/github/mozilla/conduit/bmo/.perltidyrc
+
+"run :Tidy on entire buffer and return cursor to (approximate) original position"
+fun DoTidy()
+    let l = line(".")
+    let c = col(".")
+    :Tidy
+    call cursor(l, c)
+endfun
+
+"shortcut for normal mode to run on entire buffer then return to current line"
+au Filetype perl nmap <F2> :call DoTidy()<CR>
+
+"shortcut for visual mode to run on the the current visual selection"
+au Filetype perl vmap <F2> :Tidy<CR>
