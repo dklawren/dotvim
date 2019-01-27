@@ -13,11 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'RRethy/vim-illuminate'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-bufferline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'farmergreg/vim-lastplace'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lilydjwg/colorizer'
@@ -78,6 +79,7 @@ set shell=/bin/bash             " shell preference
 set shiftwidth=4                " number of spaces to use for each step of indent
 set showcmd                     " display incomplete commands
 set showmatch                   " show the matching part of the pair for [] {} and ()
+set showmode                    " show current working mode
 set smartcase                   " searching
 set smartindent                 " smart autoindenting when starting a new line
 set smarttab                    " tabs
@@ -210,6 +212,7 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 "define :Tidy command to run perltidy on visual selection || entire buffer"
 command -range=% -nargs=* Tidy <line1>,<line2>!perltidy -pro=/home/dkl/devel/repos/github/mozilla/conduit/bmo/.perltidyrc
@@ -227,3 +230,10 @@ au Filetype perl nmap <F2> :call DoTidy()<CR>
 
 "shortcut for visual mode to run on the the current visual selection"
 au Filetype perl vmap <F2> :Tidy<CR>
+
+" Proper syntax for template toolkit (tt2) files
+autocmd BufNewFile,BufRead *.tmpl set ft=tt2
+
+" vim-lastplace
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+let g:lastplace_ignore_buftype = "quickfix,nofile,help"
