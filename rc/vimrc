@@ -14,6 +14,7 @@ Plugin 'RRethy/vim-illuminate'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'diepm/vim-rest-console'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'farmergreg/vim-lastplace'
@@ -259,3 +260,14 @@ let g:ale_perl_perlcritic_showrules = 1
 " Treat Mojo templates (mostly) like HTML
 autocmd FileType html.epl setlocal sw=2 ts=2 sts=2
 autocmd FileType html.ep setlocal sw=2 ts=2 sts=2"
+
+" VRC Rest Client
+let g:vrc_curl_opts = {
+  \ '--connect-timeout' : 10,
+  \ '-L': '',
+  \ '-i': '',
+  \ '--max-time': 60,
+  \ '--ipv4': '',
+  \ '-k': '',
+  \ '-x': 'localhost:1080'
+\}
