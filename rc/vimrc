@@ -31,7 +31,7 @@ Plugin 'osfameron/perl-tags'
 Plugin 'rsrchboy/mojo.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'skaji/syntax-check-perl'
 Plugin 'stephpy/vim-yaml'
 Plugin 'tpope/vim-fugitive'
@@ -281,3 +281,11 @@ let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+let g:netrw_banner=0
+let g:netrw_winsize=20
+let g:netrw_liststyle=3
+let g:netrw_localrmdir='rm -r'
+
+"toggle netrw on the left side of the editor
+"nnoremap <leader>n :Lexplore<CR>
